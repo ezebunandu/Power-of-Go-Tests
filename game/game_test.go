@@ -27,6 +27,12 @@ func TestListItems_GivesCorrectResultForInput(t *testing.T){
         },
         want: "You can see here a battery and a key.",
     },
+    {
+        input: []string {
+            "a battery",
+        },
+        want: "You can see a battery here.",
+    },
 }
     for _, tc := range cases {
         got := game.ListItems(tc.input)

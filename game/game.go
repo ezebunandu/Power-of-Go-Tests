@@ -8,6 +8,10 @@ import (
 func ListItems(items []string) string {
     var sb strings.Builder
     sb.WriteString("You can see here ")
+    if len(items) == 1 {
+        s := fmt.Sprintf("You can see %s here.", items[0])
+        return s
+    }
     if len(items) < 3 {
         s := fmt.Sprintf("%s and %s.", items[0], items[1])
         sb.WriteString(s)
