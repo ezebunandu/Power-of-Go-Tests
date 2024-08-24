@@ -1,28 +1,18 @@
 package game
 
 import (
-	"fmt"
 	"strings"
 )
 
 func ListItems(items []string) string {
-    var sb strings.Builder
-    sb.WriteString("You can see here ")
-    if len(items) < 1 {
+    switch len(items) {
+    case 0:
         return ""
+    case 1:
+        return "You can see " + items[0] + " here."
+    case 2:
+        return "You can see here " + items[0] + " and " + items[1] + "."
+    default:
+        return "You can see here " + strings.Join(items[:len(items)-1], ", ") + ", and " + items[len(items)-1] + "."
     }
-    if len(items) == 1 {
-        s := fmt.Sprintf("You can see %s here.", items[0])
-        return s
-    }
-    if len(items) < 3 {
-        s := fmt.Sprintf("%s and %s.", items[0], items[1])
-        sb.WriteString(s)
-        return sb.String()
-    }
-    sb.WriteString(strings.Join(items[:len(items) -1], ", "))
-    sb.WriteString(", and ")
-    sb.WriteString(items[len(items) -1])
-    sb.WriteString(".")
-    return sb.String()
 }
