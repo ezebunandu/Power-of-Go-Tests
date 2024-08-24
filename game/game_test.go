@@ -7,7 +7,6 @@ import (
 	"github.com/ezebunandu/game"
 )
 func TestListItems_GivesCorrectResultForInput(t *testing.T){
-    t.Parallel()
     type testCase struct {
         input []string
         want string
@@ -20,6 +19,13 @@ func TestListItems_GivesCorrectResultForInput(t *testing.T){
             "a tourist map",
         },
         want:  "You can see here a battery, a key, and a tourist map.",
+    },
+    {
+        input: []string {
+            "a battery",
+            "a key",
+        },
+        want: "You can see here a battery and a key.",
     },
 }
     for _, tc := range cases {
